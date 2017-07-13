@@ -11,13 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
+
+// Women
+Route::get('/women', 'WomanController@index');
+Route::get('/women/{id}', 'WomanController@show');
 
 // Track Records
-Route::get('/trackrec', 'TrackRecordController@index');
+Route::get('/track-records', 'TrackRecordController@index');
+Route::get('/track-records/{id}', 'TrackRecordController@show');

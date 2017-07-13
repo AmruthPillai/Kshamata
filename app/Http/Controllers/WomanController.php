@@ -14,7 +14,9 @@ class WomanController extends Controller
      */
     public function index()
     {
-        //
+        $women = Woman::all();
+
+        return view('women.index')->with('women', $women);
     }
 
     /**
@@ -41,12 +43,13 @@ class WomanController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Woman  $woman
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function show(Woman $woman)
+    public function show(Request $request)
     {
-        //
+        return Woman::with('trackRecords')
+            ->find(request()->id);
     }
 
     /**

@@ -22,3 +22,20 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(\App\Woman::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->name('female'),
+        'dob' => $faker->date,
+        'photo' => 'images/blank_woman_avatar.png',
+        'skills' => serialize($faker->randomElements($array = array ('cooking','knitting','stitching','cleaning'), 2)),
+    ];
+});
+
+$factory->define(\App\TrackRecord::class, function (Faker\Generator $faker) {
+    return [
+        'employer_name' => $faker->name,
+        'salary' => $faker->numberBetween(1000, 6000),
+        'location' => $faker->latitude . ',' . $faker->longitude,
+    ];
+});

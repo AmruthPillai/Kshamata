@@ -41,12 +41,12 @@ class TrackRecordController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\TrackRecord  $trackRecord
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function show(TrackRecord $trackRecord)
+    public function show(Request $request)
     {
-        //
+        return TrackRecord::find(request()->id);
     }
 
     /**

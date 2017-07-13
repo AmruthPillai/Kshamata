@@ -18,6 +18,7 @@ class CreateTrackRecordsTable extends Migration
             $table->string('employer_name');
             $table->double('salary');
             $table->string('location');
+            $table->integer('woman_id')->nullable();
             $table->timestamps();
         });
     }

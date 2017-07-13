@@ -15,6 +15,10 @@ class CreateWomenTable extends Migration
     {
         Schema::create('women', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
+            $table->date('dob');
+            $table->text('photo');
+            $table->string('skills');
             $table->timestamps();
         });
     }
