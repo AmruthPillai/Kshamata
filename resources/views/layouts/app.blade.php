@@ -16,13 +16,9 @@
   </head>
   <body>
 
-    <div id="app">
+    @include('layouts.navbar')
 
-      @include('layouts.navbar')
-
-      @yield('content')
-
-    </div>
+    @yield('content')
 
     <script src="{{ asset('js/app.js') }}"></script>
   </body>

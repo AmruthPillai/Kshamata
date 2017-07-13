@@ -40,7 +40,9 @@
           <h6>Last Known Location:</h6>
         </div>
         <div class="row">
-
+          <div style="width: 100%; height: 150px;">
+            {!! Mapper::render() !!}
+          </div>
         </div>
       </div>
     </div>

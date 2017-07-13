@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Woman;
 use Illuminate\Http\Request;
 
+use Cornford\Googlmapper\Facades\MapperFacade as Mapper;
+
 class WomanController extends Controller
 {
     /**
@@ -50,6 +52,18 @@ class WomanController extends Controller
     {
         $woman = Woman::with('trackRecords')
             ->find(request()->id);
+
+        $recentTrackRecord = $woman->trackRecords()->orderBy('created_at', 'desc')->get();
+
+        // -76.293495,-86.868115
+        $latlng = $recentTrackRecord->first()->location;
+        $latlng_explode = explode(",", $latlng);
+
+        Mapper::map(
+          $latlng_explode[0],
+          $latlng_explode[1],
+          ['zoom' => 4]
+        );
 
         return view('women.show')->with('woman', $woman);
     }
