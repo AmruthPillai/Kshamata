@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container">
-  <h2>Women under the Kshamata System</h2>
+  <h3>Women under the Kshamata System</h3>
 
   <table class="table table-striped">
     <thead>
@@ -12,7 +12,7 @@
         <th>Name</th>
         <th>Date of Birth</th>
         <th>Skills</th>
-        <th>Joining Date</th>
+        <th>Joining Date &amp; Time</th>
         <th>Operations</th>
       </tr>
     </thead>
@@ -27,12 +27,12 @@
             <span class="label label-primary">{{ $value }}</span>
           @endforeach
         </td>
-        <td>{{ $woman->created_at->format('d M Y') }}</td>
+        <td>{{ $woman->created_at->format('d M Y H:m A') }}</td>
         <td>
           <div class="btn-group">
             <a href="/women/{{ $woman->id }}" type="button" class="btn btn-primary"><i class="glyphicon glyphicon-eye-open"></i></a>
-            <a type="button" class="btn btn-warning"><i class="glyphicon glyphicon-pencil"></i></a>
-            <a type="button" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i></a>
+            {{-- <a type="button" class="btn btn-warning"><i class="glyphicon glyphicon-pencil"></i></a> --}}
+            <a href="/women/{{ $woman->id }}/delete" type="button" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i></a>
           </div>
         </td>
       </tr>

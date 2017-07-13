@@ -65,7 +65,7 @@ class WomanController extends Controller
           ['zoom' => 4]
         );
 
-        return view('women.show')->with('woman', $woman);
+        return view('women.show')->with('woman', $woman)->with('latlng', $latlng_explode);
     }
 
     /**
@@ -97,8 +97,14 @@ class WomanController extends Controller
      * @param  \App\Woman  $woman
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Woman $woman)
+    public function destroy($id)
     {
-        //
+        $woman = Woman::find($id);
+        $woman->trackRecords()->delete();
+        $woman->delete();
+
+        $women = Woman::all();
+
+        return view('women.index')->with('women', $women);
     }
 }

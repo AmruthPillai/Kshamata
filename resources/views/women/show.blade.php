@@ -49,6 +49,32 @@
   </div>
 
   <hr>
+
+  <h5>TRACK RECORDS</h5>
+  <br>
+  @foreach ($woman->trackRecords as $key => $tr)
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4">
+              <h6>Recorded Date: {{ $tr->created_at }}</h6>
+              <h5>Track #{{ $tr->id }}</h5>
+            </div>
+            <div class="col-md-4">
+              <h6>Employer Name: {{ $tr->employer_name }}</h6>
+              <h5>Salary: ₹{{ number_format($tr->salary, 2) }}</h5>
+            </div>
+            <div class="col-md-4">
+              <h6>Recoded Location:</h6>
+              <h5>{{ $latlng[0] }}, {{ $latlng[1] }}</h5>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  @endforeach
 </div>
 
 @endsection
