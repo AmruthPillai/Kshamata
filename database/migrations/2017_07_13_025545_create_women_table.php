@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTrackRecordsTable extends Migration
+class CreateWomenTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateTrackRecordsTable extends Migration
      */
     public function up()
     {
-        Schema::create('track_records', function (Blueprint $table) {
+        Schema::create('women', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('employer_name');
-            $table->double('salary');
-            $table->string('location');
             $table->timestamps();
         });
     }
@@ -29,6 +26,6 @@ class CreateTrackRecordsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('track_records');
+        Schema::dropIfExists('women');
     }
 }

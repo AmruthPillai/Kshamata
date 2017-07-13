@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\TrackRecord;
+use App\Woman;
 use Illuminate\Http\Request;
 
-class TrackRecordController extends Controller
+class WomanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class TrackRecordController extends Controller
      */
     public function index()
     {
-        return TrackRecord::all();
+        //
     }
 
     /**
@@ -41,10 +41,10 @@ class TrackRecordController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\TrackRecord  $trackRecord
+     * @param  \App\Woman  $woman
      * @return \Illuminate\Http\Response
      */
-    public function show(TrackRecord $trackRecord)
+    public function show(Woman $woman)
     {
         //
     }
@@ -52,10 +52,10 @@ class TrackRecordController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\TrackRecord  $trackRecord
+     * @param  \App\Woman  $woman
      * @return \Illuminate\Http\Response
      */
-    public function edit(TrackRecord $trackRecord)
+    public function edit(Woman $woman)
     {
         //
     }
@@ -64,10 +64,10 @@ class TrackRecordController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\TrackRecord  $trackRecord
+     * @param  \App\Woman  $woman
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TrackRecord $trackRecord)
+    public function update(Request $request, Woman $woman)
     {
         //
     }
@@ -75,10 +75,10 @@ class TrackRecordController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\TrackRecord  $trackRecord
+     * @param  \App\Woman  $woman
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TrackRecord $trackRecord)
+    public function destroy(Woman $woman)
     {
         //
     }
