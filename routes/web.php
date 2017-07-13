@@ -13,7 +13,14 @@
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/logout', function() {
+    Auth::logout();
+    Session::flush();
+
+    return Redirect::back();
+});
+
+Route::get('/', 'HomeController@index');
 
 // Women
 Route::get('/women', 'WomanController@index');

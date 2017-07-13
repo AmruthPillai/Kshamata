@@ -15,8 +15,17 @@
       <ul class="nav navbar-nav">
         <li><a href="/women">Women</a></li>
       </ul>
+
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="/login">Login</a></li>
+        @if ( Auth::guest() )
+          <li><a href="/login">Login</a></li>
+          <li><a href="/register">Register</a></li>
+        @else
+          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="/logout">Logout</a></li>
+            </ul></li>
+        @endif
       </ul>
     </div>
   </div>

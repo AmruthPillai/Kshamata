@@ -773,7 +773,8 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(9);
-module.exports = __webpack_require__(40);
+__webpack_require__(40);
+module.exports = __webpack_require__(41);
 
 
 /***/ }),
@@ -802,6 +803,18 @@ Vue.component('example', __webpack_require__(36));
 var app = new Vue({
   el: '#app'
 });
+
+function initMap() {
+  var uluru = { lat: -25.363, lng: 131.044 };
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 4,
+    center: uluru
+  });
+  var marker = new google.maps.Marker({
+    position: uluru,
+    map: map
+  });
+}
 
 /***/ }),
 /* 10 */
@@ -41584,6 +41597,12 @@ if (false) {
 
 /***/ }),
 /* 40 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 41 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

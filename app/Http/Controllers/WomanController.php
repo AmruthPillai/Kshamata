@@ -48,8 +48,10 @@ class WomanController extends Controller
      */
     public function show(Request $request)
     {
-        return Woman::with('trackRecords')
+        $woman = Woman::with('trackRecords')
             ->find(request()->id);
+
+        return view('women.show')->with('woman', $woman);
     }
 
     /**

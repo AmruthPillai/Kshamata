@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container">
-  <h1>Women under the Kshamata System</h1>
+  <h2>Women under the Kshamata System</h2>
 
   <table class="table table-striped">
     <thead>
@@ -24,7 +24,7 @@
         <td>{{ $woman->dob->format('d M Y') }}</td>
         <td>
           @foreach (unserialize($woman->skills) as $key => $value)
-            <span class="badge">{{ $value }}</span>
+            <span class="label label-primary">{{ $value }}</span>
           @endforeach
         </td>
         <td>{{ $woman->created_at->format('d M Y') }}</td>

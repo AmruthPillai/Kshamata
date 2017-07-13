@@ -11,13 +11,18 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
+    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   </head>
   <body>
 
-    @include('layouts.navbar')
+    <div id="app">
 
-    @yield('content')
+      @include('layouts.navbar')
+
+      @yield('content')
+
+    </div>
 
     <script src="{{ asset('js/app.js') }}"></script>
   </body>
