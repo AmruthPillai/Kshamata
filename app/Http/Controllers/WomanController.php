@@ -6,6 +6,7 @@ use App\Woman;
 use Illuminate\Http\Request;
 
 use Cornford\Googlmapper\Facades\MapperFacade as Mapper;
+use Carbon\Carbon;
 
 class WomanController extends Controller
 {
@@ -39,7 +40,16 @@ class WomanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $woman = new Woman;
+        $woman->name = $request->name;
+        $woman->dob = Carbon::parse($request->dob);
+        $woman->skills = serialize(explode(',', $request->skills));
+        if ($request->photo) {
+          $woman->photo = $request->photo->store('photos');
+        }
+        $woman->save();
+
+        return redirect('women');
     }
 
     /**
@@ -55,17 +65,20 @@ class WomanController extends Controller
 
         $recentTrackRecord = $woman->trackRecords()->orderBy('created_at', 'desc')->get();
 
-        // -76.293495,-86.868115
-        $latlng = $recentTrackRecord->first()->location;
-        $latlng_explode = explode(",", $latlng);
+        if ($recentTrackRecord->first()) {
+          $latlng = $recentTrackRecord->first()->location;
+          $latlng_explode = explode(",", $latlng);
 
-        Mapper::map(
-          $latlng_explode[0],
-          $latlng_explode[1],
-          ['zoom' => 4]
-        );
+          Mapper::map(
+            $latlng_explode[0],
+            $latlng_explode[1],
+            ['zoom' => 4]
+          );
 
-        return view('women.show')->with('woman', $woman)->with('latlng', $latlng_explode);
+          return view('women.show')->with('woman', $woman)->with('latlng', $latlng_explode);
+        } else {
+          return view('women.show')->with('woman', $woman);
+        }
     }
 
     /**

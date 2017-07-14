@@ -41,6 +41,50 @@
 
   </table>
 
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createWomanModal">Add New</button>
+
+</div>
+
+<!-- Modal -->
+<div id="createWomanModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Create a new Woman into the Kshamata System</h4>
+      </div>
+      <form class="form" action="/women" method="post" role="form" enctype="multipart/form-data">
+      <div class="modal-body">
+          {{ csrf_field() }}
+
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" name="name" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="dob">Date of Birth</label>
+            <input type="date" name="dob" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="skills">Skills</label>
+            <input type="text" name="skills" class="form-control">
+            <span class="help-block">If there is more than one, seperate them using commas.</span>
+          </div>
+          <div class="form-group">
+            <label for="photo">Photo</label>
+            <input type="file" name="photo">
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+      </form>
+    </div>
+
+  </div>
 </div>
 
 @endsection

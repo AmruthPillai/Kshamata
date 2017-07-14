@@ -5,7 +5,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-2">
-      <img src="{{ asset('images/blank_woman_avatar.png') }}" alt="Woman Avatar" class="img-responsive">
+      <img src="/storage/{{ $woman->photo }}" alt="Woman Avatar" class="img-responsive">
     </div>
     <div class="col-md-10">
       <h2>{{ $woman->name }}</h2>
@@ -35,6 +35,8 @@
           @endforeach
         </div>
       </div>
+
+      @if ($woman->trackRecords->first())
       <div class="col-md-6">
         <div class="row">
           <h6>Last Known Location:</h6>
@@ -45,6 +47,8 @@
           </div>
         </div>
       </div>
+      @endif
+
     </div>
   </div>
 
@@ -52,6 +56,10 @@
 
   <h5>TRACK RECORDS</h5>
   <br>
+  @if ($woman->trackRecords())
+    <p>No track records found at the moment.</p>
+  @endif
+
   @foreach ($woman->trackRecords as $key => $tr)
     <div class="panel panel-default">
       <div class="panel-body">

@@ -17,7 +17,7 @@ class CreateWomenTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->date('dob');
-            $table->text('photo');
+            $table->string('photo')->default('images/blank_woman_avatar.png');
             $table->string('skills');
             $table->timestamps();
         });

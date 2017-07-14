@@ -26,6 +26,7 @@ Route::get('/', 'HomeController@index');
 Route::get('/women', 'WomanController@index');
 Route::get('/women/{id}', 'WomanController@show');
 Route::get('/women/{id}/delete', 'WomanController@destroy');
+Route::post('/women', 'WomanController@store');
 
 // Track Records
 Route::get('/track-records', 'TrackRecordController@index');
