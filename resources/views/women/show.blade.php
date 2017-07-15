@@ -5,6 +5,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-2">
+      <br>
       <img src="/storage/{{ $woman->photo }}" alt="Woman Avatar" class="img-responsive">
     </div>
     <div class="col-md-10">
@@ -43,7 +44,7 @@
         </div>
         <div class="row">
           <div style="width: 100%; height: 150px;">
-            {!! Mapper::render() !!}
+            {!! Mapper::render(1) !!}
           </div>
         </div>
       </div>
@@ -54,7 +55,10 @@
 
   <hr>
 
-  <h5>TRACK RECORDS</h5>
+  <h4>
+    <span>TRACK RECORDS</span>
+      <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#createTrackRecordModal">Add New</button>
+  </h4>
   <br>
   @if ($woman->trackRecords())
     <p>No track records found at the moment.</p>
@@ -83,6 +87,43 @@
       </div>
     </div>
   @endforeach
+</div>
+
+<!-- Modal -->
+<div id="createTrackRecordModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Create a new Track Record <br>for {{ $woman->name }}</h4>
+            </div>
+            <form class="form" action="/women" method="post" role="form" enctype="multipart/form-data">
+                <div class="modal-body">
+                    {{ csrf_field() }}
+
+                    <div class="form-group">
+                        <label for="employer_name">Employer Name</label>
+                        <input type="text" name="employer_name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="salary">Salary</label>
+                        <input type="number" name="salary" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Location</label>
+                        <input type="text" name="employer_name" class="form-control" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
 </div>
 
 @endsection

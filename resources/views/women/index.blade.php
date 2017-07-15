@@ -3,12 +3,15 @@
 @section('content')
 
 <div class="container">
-  <h3>Women under the Kshamata System</h3>
+    <h3>
+        <span>Women under the Kshamata System</span>
+        <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#createWomanModal">Add New</button>
+    </h3>
 
   <table class="table table-striped">
     <thead>
       <tr>
-        <th>Sl. No.</th>
+        <th>ID</th>
         <th>Name</th>
         <th>Date of Birth</th>
         <th>Skills</th>
@@ -19,7 +22,7 @@
     <tbody>
     @foreach ($women as $key => $woman)
       <tr>
-        <td>{{ $key + 1 }}</td>
+        <td><strong>{{ $woman->id }}</strong></td>
         <td>{{ $woman->name }}</td>
         <td>{{ $woman->dob->format('d M Y') }}</td>
         <td>
@@ -31,7 +34,6 @@
         <td>
           <div class="btn-group">
             <a href="/women/{{ $woman->id }}" type="button" class="btn btn-primary"><i class="glyphicon glyphicon-eye-open"></i></a>
-            {{-- <a type="button" class="btn btn-warning"><i class="glyphicon glyphicon-pencil"></i></a> --}}
             <a href="/women/{{ $woman->id }}/delete" type="button" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i></a>
           </div>
         </td>
@@ -40,8 +42,6 @@
     </tbody>
 
   </table>
-
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createWomanModal">Add New</button>
 
 </div>
 

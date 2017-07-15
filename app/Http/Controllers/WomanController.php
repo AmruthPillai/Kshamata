@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 use Cornford\Googlmapper\Facades\MapperFacade as Mapper;
 use Carbon\Carbon;
 
+use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Client;
+
 class WomanController extends Controller
 {
     /**
@@ -66,18 +69,18 @@ class WomanController extends Controller
         $recentTrackRecord = $woman->trackRecords()->orderBy('created_at', 'desc')->get();
 
         if ($recentTrackRecord->first()) {
-          $latlng = $recentTrackRecord->first()->location;
-          $latlng_explode = explode(",", $latlng);
+            $latlng = $recentTrackRecord->first()->location;
+            $latlng_explode = explode(",", $latlng);
 
-          Mapper::map(
-            $latlng_explode[0],
-            $latlng_explode[1],
-            ['zoom' => 4]
-          );
+            Mapper::map(
+                $latlng_explode[0],
+                $latlng_explode[1],
+                ['zoom' => 4]
+            );
 
-          return view('women.show')->with('woman', $woman)->with('latlng', $latlng_explode);
+            return view('women.show')->with('woman', $woman)->with('latlng', $latlng_explode);
         } else {
-          return view('women.show')->with('woman', $woman);
+            return view('women.show')->with('woman', $woman);
         }
     }
 
