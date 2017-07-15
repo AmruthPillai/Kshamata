@@ -44,7 +44,7 @@
         </div>
         <div class="row">
           <div style="width: 100%; height: 150px;">
-            {!! Mapper::render(1) !!}
+            {!! Mapper::render() !!}
           </div>
         </div>
       </div>
@@ -99,7 +99,7 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">Create a new Track Record <br>for {{ $woman->name }}</h4>
             </div>
-            <form class="form" action="/women" method="post" role="form" enctype="multipart/form-data">
+            <form class="form" action="/women/{{ $woman->id }}/track-records/" method="post" role="form">
                 <div class="modal-body">
                     {{ csrf_field() }}
 
@@ -113,7 +113,8 @@
                     </div>
                     <div class="form-group">
                         <label for="location">Location</label>
-                        <input type="text" name="employer_name" class="form-control" required>
+                        <input type="text" name="location" class="form-control" required>
+                        <span class="help-block">Please enter the location in (latitude,longitude) format, until Google's Geocoding API is successfully implemented.</span>
                     </div>
                 </div>
                 <div class="modal-footer">

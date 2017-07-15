@@ -24,10 +24,11 @@ Route::get('/', 'HomeController@index');
 
 // Women
 Route::get('/women', 'WomanController@index');
+Route::post('/women', 'WomanController@store');
 Route::get('/women/{id}', 'WomanController@show');
 Route::get('/women/{id}/delete', 'WomanController@destroy');
-Route::post('/women', 'WomanController@store');
 
 // Track Records
 Route::get('/track-records', 'TrackRecordController@index');
 Route::get('/track-records/{id}', 'TrackRecordController@show');
+Route::post('women/{id}/track-records', 'TrackRecordController@store');

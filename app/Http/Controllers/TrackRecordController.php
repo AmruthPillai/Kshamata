@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Woman;
 use App\TrackRecord;
 use Illuminate\Http\Request;
 
@@ -35,7 +36,17 @@ class TrackRecordController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $woman = Woman::find(request()->id);
+
+        $trackRecord = new TrackRecord;
+
+        $trackRecord->employer_name = request()->employer_name;
+        $trackRecord->salary = request()->salary;
+        $trackRecord->location = request()->location;
+
+        $woman->trackRecords()->save($trackRecord);
+
+        return redirect()->back();
     }
 
     /**
